@@ -2,7 +2,10 @@ doctype html
 html
     head
         title Digital Paper Game
+        script(type='text/javascript' src='static/script.js')
         link(rel='stylesheet' type='text/css' href='style/style.css')
     body
-        h1 No content
-        p I could put some lorem ipsum or something here but it wouldn't survive for very long.
+        h1 Testing Post Form
+        form#file-form(method='POST')
+            input#file-select(type='file' name='image')
+            button(type='submit') Upload

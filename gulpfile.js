@@ -20,4 +20,9 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('build/style'))
 });
 
-gulp.task('default', ['pug', 'styles']);
+gulp.task('static', function() {
+    gulp.src('src/static/*')
+        .pipe(gulp.dest('build/static'))
+});
+
+gulp.task('default', ['pug', 'styles', 'static']);
