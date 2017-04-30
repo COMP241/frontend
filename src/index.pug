@@ -1,11 +1,14 @@
 doctype html
 html
     head
-        title Digital Paper Game
+        title Digital Paper Game Uploader
         script(type='text/javascript' src='static/script.js')
         link(rel='stylesheet' type='text/css' href='style/style.css')
     body
-        h1 Testing Post Form
-        form#file-form(method='POST')
-            input#file-select(type='file' name='image')
-            button(type='submit') Upload
+        header
+            h1 Digital Paper Game Uploader
+        main
+            form#file-form
+                input#file-select(type='file' name='image')
+                button(type='submit') Upload
+            p#response Response here

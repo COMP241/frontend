@@ -1,20 +1,31 @@
 window.onload = function() {
     var form = document.getElementById('file-form');
     var fileSelect = document.getElementById('file-select');
+    var responseText = document.getElementById('response');
 
     form.onsubmit = function() {
         event.preventDefault();
 
+        responseText.innerHTML = 'Uploading...';
+        responseText.className = 'progress';
+
         var formData = new FormData();
         var file = fileSelect.files[0];
+
+        if (file == undefined) {
+            responseText.innerHTML = 'Please choose a file.';
+            responseText.className = 'fail';
+            return;
+        }
+
         formData.append('image', file, file.name);
 
         var http = new XMLHttpRequest();
 
         http.onreadystatechange = function() {
-            console.log(http);
             if (http.readyState == 4 && http.status == 200) {
-                console.log()
+                responseText.innerHTML = http.responseText;
+                responseText.className = 'success';
             }
         };
 

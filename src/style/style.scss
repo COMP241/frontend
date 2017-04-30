@@ -1,1 +1,27 @@
 @import 'reset';
+
+.progress {
+  color: #ff980f;
+}
+
+.fail {
+  color: #ff3333;
+}
+
+.success {
+  color: #33ff33;
+}
+
+body {
+  text-align: center;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 16px;
+}
+
+#response {
+  font-weight: bold;
+  margin: 16px;
+}
