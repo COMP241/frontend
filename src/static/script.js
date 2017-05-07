@@ -29,6 +29,10 @@ window.onload = function() {
                 responseText.className = 'success';
                 drawpreview(map);
             }
+            else if (http.readyState == 4 && http.status != 200) {
+                responseText.innerHTML = 'An error has occurred.';
+                responseText.className = 'fail';
+            }
         };
 
         http.open('POST', 'http://papermap.tk/api/map', true);
