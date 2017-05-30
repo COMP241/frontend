@@ -29,8 +29,20 @@ window.onload = function() {
                 responseText.className = 'success';
                 drawpreview(map);
             }
-            else if (http.readyState == 4 && http.status != 200) {
-                responseText.innerHTML = 'An error has occurred.';
+            else if (http.readyState == 4 && http.status == 0) {
+                responseText.innerHTML = 'The server could not be found.';
+                responseText.className = 'fail';
+            }
+            else if (http.readyState == 4 && http.status == 415) {
+                responseText.innerHTML = 'That is an unsupported image type.';
+                responseText.className = 'fail';
+            }
+            else if (http.readyState == 4 && http.status == 500) {
+                responseText.innerHTML = 'An error has occured processing your image, please try another one.';
+                responseText.className = 'fail';
+            }
+            else if (http.readyState == 4) {
+                responseText.innerHTML = 'An unknown error has occurred.';
                 responseText.className = 'fail';
             }
         };
