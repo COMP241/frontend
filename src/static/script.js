@@ -23,11 +23,28 @@ window.onload = function() {
         var http = new XMLHttpRequest();
 
         http.onreadystatechange = function() {
-            if (http.readyState == 4 && http.status == 200) {
-                var map = JSON.parse(http.responseText);
-                responseText.innerHTML = 'Map ID: ' + map['Id'];
-                responseText.className = 'success';
-                drawpreview(map);
+            if (http.readyState == 4) {
+                if (http.status == 200) {
+                    var map = JSON.parse(http.responseText);
+                    responseText.innerHTML = 'Map ID: ' + map['Id'];
+                    responseText.className = 'success';
+                    drawpreview(map);
+                } else {
+                    switch (http.status) {
+                        case 0:
+                            responseText.innerHTML = 'The server could not be found.';
+                            break;
+                        case 415:
+                            responseText.innerHTML = 'Unsupported image type, try another one.';
+                            break;
+                        case 500:
+                            responseText.innerHTML = 'An error occurred processing your image, please try another one.';
+                            break;
+                        default:
+                            responseText.innerHTML = 'An unknown error occurred. ¯\\_(ツ)_/¯'
+                    }
+                    responseText.className = 'fail';
+                }
             }
         };
 
