@@ -34,6 +34,9 @@ window.onload = function() {
                         case 0:
                             responseText.innerHTML = 'The server could not be found.';
                             break;
+                        case 413:
+                            responseText.innerHTML = 'File too large for the server.';
+                            break;
                         case 415:
                             responseText.innerHTML = 'Unsupported image type, try another one.';
                             break;
