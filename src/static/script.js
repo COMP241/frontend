@@ -4,6 +4,19 @@ window.onload = function() {
     var transformCheck = document.getElementById('transform-check');
     var responseText = document.getElementById('response');
 
+    // Other page set up code
+    var label = fileSelect.nextElementSibling,
+        labelVal = label.innerHTML;
+
+    fileSelect.addEventListener('change', function(e) {
+        var filename = e.target.value.split('\\').pop();
+        if (filename)
+            label.querySelector('span').innerHTML = filename;
+        else
+            label.innerHTML = labelVal;
+    });
+
+    // Form Submission
     form.onsubmit = function() {
         event.preventDefault();
 

@@ -1,5 +1,17 @@
 @import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
+// Variables
+$highlight: #000099;
+$dull: #333;
+
+$large-font: 3.2vh;
+$space: 1.9vh;
+$mid-font: 2.4vh;
+
+$break-large: 800px;
+
+//Styles start
 .progress {
   color: #ff980f;
 }
@@ -14,20 +26,104 @@
 
 body {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
   font-weight: bold;
-  margin: 16px;
 }
 
-#response {
-  font-weight: bold;
-  margin: 16px;
+h1, #response {
+  margin: $space;
+  font-size: $large-font;
 }
 
 canvas {
-  width: 80%;
-  max-width: 1000px;
+  width: 95%;
   border: solid black 1px;
+}
+
+// Form styles
+#file-select {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  z-index: -1;
+  height: 0.1px;
+  width: 0.1px;
+}
+
+.file-label {
+  font-size: $mid-font;
+  font-weight: 700;
+  color: white;
+  background-color: $dull;
+  display: inline-block;
+  cursor: pointer;
+  padding: $space;
+  margin-bottom: $space;
+  transition: background-color 0.3s ease-in-out;
+
+  &:focus, &:hover {
+    background-color: $highlight;
+  }
+
+  svg {
+    margin-right: $space;
+    width: $mid-font;
+    height: $mid-font;
+  }
+
+  path {
+    fill: white;
+  }
+}
+
+#transform-check {
+  display: none;
+
+  & + label {
+    cursor: pointer;
+    font-size: $mid-font;
+  }
+
+  & + label::before {
+    display: inline-block;
+    margin: 0 $space;
+    opacity: 0.2;
+    content: '';
+    position: relative;
+    top: -0.2em;
+    width: 0.9em;
+    height: 0.5em;
+    border: 0.3em solid $dull;
+    border-top: none;
+    border-right: none;
+
+    transform: rotate(-45deg);
+    transition-duration: 0.3s;
+    transition-property: opacity, border-color;
+    transition-timing-function: ease-in-out;
+  }
+
+  &:checked + label::before {
+    opacity: 1;
+    border-color: $highlight;
+  }
+}
+
+button {
+  font-size: $mid-font;
+  background: $dull;
+  color: white;
+  border: 0.1em solid $dull;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  padding: 0.5 * $space;
+
+  &:hover {
+    background: $highlight;
+  }
 }
