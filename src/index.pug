@@ -10,6 +10,11 @@ html
         main
             form#file-form
                 input#file-select(type='file' name='image')
+                br
+                label
+                    input#transform-check(type='checkbox' name='test' checked)
+                    | Perform transformation and lighting correction.
+                br
                 button(type='submit') Upload
             p#response Response here
             canvas#preview

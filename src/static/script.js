@@ -1,6 +1,7 @@
 window.onload = function() {
     var form = document.getElementById('file-form');
     var fileSelect = document.getElementById('file-select');
+    var transformCheck = document.getElementById('transform-check');
     var responseText = document.getElementById('response');
 
     form.onsubmit = function() {
@@ -19,6 +20,7 @@ window.onload = function() {
         }
 
         formData.append('image', file, file.name);
+        formData.append('transform', transformCheck.checked);
 
         var http = new XMLHttpRequest();
 
