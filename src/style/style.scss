@@ -127,3 +127,39 @@ button {
     background: $highlight;
   }
 }
+
+// Preview page styles
+#thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
+
+  span {
+    display: inline-block;
+    width: 100%;
+  }
+
+  canvas {
+    display: inline-block;
+  }
+
+  div {
+    display: block;
+    width: 360px;
+    max-width: 33%;
+    margin-bottom: $space;
+    overflow: hidden;
+    animation: deploy 0.4s ease-in-out;
+  }
+}
+
+@keyframes deploy {
+  from {
+    max-width: 5%;
+  }
+  to {
+    max-width: 33%;
+  }
+}
