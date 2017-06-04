@@ -8,12 +8,29 @@ window.onload = function() {
     var label = fileSelect.nextElementSibling,
         labelVal = label.innerHTML;
 
-    fileSelect.addEventListener('change', function(e) {
-        var filename = e.target.value.split('\\').pop();
+    var updateFileName = function() {
+        var filename = fileSelect.files[0].name;
         if (filename)
             label.querySelector('span').innerHTML = filename;
         else
             label.innerHTML = labelVal;
+    };
+
+    fileSelect.addEventListener('change', function(e) {
+        updateFileName();
+    });
+
+    form.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = 'copy';
+    });
+
+    form.addEventListener('drop', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileSelect.files[0] = e.dataTransfer.files[0];
+        updateFileName();
     });
 
     // Form Submission
