@@ -1,8 +1,13 @@
 var gulp = require('gulp'),
     pug = require('gulp-pug'),
     sass = require('gulp-sass'),
-    cleanCSS = require('gulp-clean-css');
+    cleanCSS = require('gulp-clean-css'),
+    util = require('gulp-util'),
+    uglify = require('gulp-uglify');
 
+var config = {
+    production: !!util.env.production
+};
 
 gulp.task('debug', function() {
    console.log('Bugs totally removed.');
@@ -22,7 +27,8 @@ gulp.task('styles', function() {
 });
 
 gulp.task('static', function() {
-    gulp.src('src/static/*')
+    gulp.src('src/static/*.js')
+        .pipe(config.production ? uglify() : util.noop())
         .pipe(gulp.dest('build/static'));
 });
 
