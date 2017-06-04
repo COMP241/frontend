@@ -47,7 +47,7 @@ window.onload = function() {
                 } else {
                     switch (http.status) {
                         case 0:
-                            responseText.innerHTML = 'The server could not be found.';
+                            responseText.innerHTML = 'Server not found or timeout - check console for details.';
                             break;
                         case 413:
                             responseText.innerHTML = 'File too large for the server.';
