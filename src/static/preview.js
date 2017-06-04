@@ -42,7 +42,6 @@ window.onload = function () {
     http.open('GET', 'http://papermap.tk/api/map', true);
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            console.log('u wot');
             readStream(JSON.parse(http.responseText).length-1);
         }
     };
